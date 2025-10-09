@@ -7,7 +7,66 @@ import { useSelector } from "react-redux";
 
 export default function ViewProfile() {
   const { user } = useSelector((store) => store.auth)
-   
+
+  if (user?.role === "recruiter") {
+    return (
+      <div className="max-w-4xl mx-auto p-6 space-y-6 shadow-2xl bg-white">
+        {/* Company Cover Image */}
+        <div className="w-full h-48 rounded-2xl overflow-hidden">
+          <img
+            src={user?.company?.coverImage}
+            alt="company cover"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Recruiter + Company Header */}
+        <Card className="grid grid-cols-2 gap-6 p-6 -mt-15 relative z-10">
+          <img
+            src={user?.company?.logo}
+            alt="company logo"
+            className="w-28 h-28 rounded-full object-contain border-4 border-white shadow-md"
+          />
+          <div>
+            <h2 className="text-2xl font-bold">{user?.company?.name}</h2>
+            <p className="text-gray-600">{user?.fullName} (Recruiter)</p>
+
+            <div className="flex gap-4 mt-2 text-sm text-gray-700">
+              <span className="flex items-center gap-1">
+                <Mail size={20} className="text-blue-500" /> {user?.email}
+              </span>
+              <span className="flex items-center gap-1">
+                <Phone size={20} /> {user?.phoneNumber}
+              </span>
+            </div>
+          </div>
+        </Card>
+
+        {/* Company Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle>About Company</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>{user?.company?.description || "No company info available"}</p>
+          </CardContent>
+        </Card>
+
+        {/* Posted Jobs */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Job Listings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {/* Replace with your recruiter job table */}
+            {/* <RecruiterJobTable jobs={user?.company?.jobs || []} /> */}
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+
 
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6 shadow-2xl bg-white ">
@@ -29,7 +88,7 @@ export default function ViewProfile() {
         <img
           src={user?.profile?.profilePhoto}
           alt="profile"
-          className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
+          className="w-28 h-28 rounded-full object-contain border-4 border-white shadow-md"
         />
         <div>
           <h2 className="text-2xl font-bold">{user?.fullName}</h2>
@@ -41,7 +100,7 @@ export default function ViewProfile() {
               <Phone size={30} /> {user?.phoneNumber}
             </span>
           </div>
-          
+
           {user?.profile?.resume && (
             <Button variant="outline" className="bg-blue-500 text-white mt-3">
               <a href={user.profile.resume} download={user.profile.resumeoriginalname} target="_blank" className="flex items-center gap-2">
@@ -84,7 +143,7 @@ export default function ViewProfile() {
         </CardContent>
       </Card>
       <div>
-        <AppliedJobTables  />
+        <AppliedJobTables />
       </div>
     </div>
   );

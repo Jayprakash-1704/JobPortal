@@ -25,7 +25,7 @@ const usegetAllJobs = () => {
         fetchAllJobs()
     },
 
-        [])
+        [dispatch])
 
 }
 

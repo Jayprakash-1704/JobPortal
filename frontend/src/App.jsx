@@ -10,6 +10,9 @@ import Browse from './components/Browse.jsx';
 import Profile from './components/Profile.jsx';
 import JobDescription from './components/JobDescription.jsx';
 import UpdateProfileDialog from './components/UpdateProfileDialog.jsx';
+import Companies from './components/adminUI/Companies.jsx';
+import CompanyCreate from './components/adminUI/CompanyCreate.jsx';
+import CompanyHandlePage from './components/adminUI/CompanyHandlePage.jsx';
 
 function App() {
 
@@ -29,6 +32,9 @@ function App() {
         <Route path="/explore" element={<Browse />} />
         <Route path="/view-profile" element={<Profile />} />
         <Route path="/jobs/description/:id" element={<JobDescription  />} />
+        <Route path="/admin/companies" element={< Companies/>} />
+        <Route path="/admin/companies/create" element={< CompanyCreate/>} />
+        <Route path="/admin/companies/:id" element={< CompanyHandlePage/>} />
         
       </Routes>
     </>

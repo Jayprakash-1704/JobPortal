@@ -41,7 +41,7 @@ function Navbar() {
 
   return (
     <div className="bg-white sticky top-0 z-50 shadow ">
-      <div className="flex   items-center justify-between mx-auto max-w-7xl h-20 px-10">
+      <div className="flex   items-center justify-between mx-auto max-w-7xl h-19 px-10">
         {/* Left - Logo */}
         <div className="flex-shrink-0">
           <span className="text-2xl text-red-500  font-bold">Job</span>
@@ -51,30 +51,53 @@ function Navbar() {
         {/* Middle - Nav Links */}
         <div className="flex-1 flex justify-center">
           <ul className="flex font-medium gap-8 items-center">
-            <li>
-              <Link
-                className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full "
-                to={"/"}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
-                to={"/jobs"}
-              >
-                Jobs
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
-                to={"/explore"}
-              >
-                Explore
-              </Link>
-            </li>
+            {user && user.role === "recruiter" ? (
+              <> <li>
+                <Link
+                  className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full "
+                  to={"/admin/jobs"}
+                >
+                  Jobs
+                </Link>
+              </li>
+                <li>
+                  <Link
+                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                    to={"/admin/companies"}
+                  >
+                    Companies
+                  </Link>
+                </li>
+              </>
+              ) : (
+              <>
+                <li>
+                  <Link
+                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full "
+                    to={"/"}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                    to={"/jobs"}
+                  >
+                    Jobs
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                    to={"/explore"}
+                  >
+                    Explore
+                  </Link>
+                </li>
+              </>
+            )}
+
           </ul>
         </div>
 

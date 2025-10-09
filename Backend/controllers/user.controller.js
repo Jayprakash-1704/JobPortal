@@ -81,8 +81,8 @@ export const login = async (req, res) => {
       .cookie("token", token, {
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
-        sameSite: "lax", 
-        
+        sameSite: "lax", // change from "none"
+        // secure: false,
       })
       .json({ message: `Welcome Back ${user.fullName}`, user, success: true });
   } catch (error) {
@@ -90,12 +90,14 @@ export const login = async (req, res) => {
   }
 };
 
+
 export const logout = async (req, res) => {
   try {
     res.clearCookie("token", {
+      
       httpOnly: true,
       sameSite: "lax", 
-      
+      // secure: false,
     });
     return res
       .status(200)
@@ -202,8 +204,6 @@ export const updateProfile = async (req, res) => {
     if (bio) user.profile.bio = bio;
     if (skills) user.profile.skills = skillsArray;
 
-   
-
     const uploadToCloudinary = (fileBuffer, options) => {
       return new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
@@ -226,7 +226,6 @@ export const updateProfile = async (req, res) => {
       });
       user.profile.profilePhoto = result.secure_url;
     }
-
 
     if (resume && resume[0]) {
       const result = await uploadToCloudinary(resume[0].buffer, {

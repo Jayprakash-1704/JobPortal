@@ -6,6 +6,7 @@ import jobSlice from "./jobslice"
 import { persistStore,persistReducer,FLUSH,REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER } from 'redux-persist'
 
 import storage from "redux-persist/lib/storage"
+import  companySlice  from './companyslice'
 // import { version } from 'vite'
 
 const persistConfig = {
@@ -17,7 +18,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authSlice,
-  job:jobSlice
+  job:jobSlice,
+  company:companySlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
