@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#98297",   // example blue
-        secondary: "#9333EA", // example purple
+        paleMint: '#ddf7e9',
+        
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 }

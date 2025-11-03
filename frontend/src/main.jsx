@@ -10,7 +10,7 @@ import { Toaster } from "./components/ui/sonner.jsx";
 import { Provider } from 'react-redux'
 // import {store} from './redux/store.js'
 import { PersistGate } from "redux-persist/integration/react";
-import {store,persistor} from "./redux/store.js"
+import { store, persistor } from "./redux/store.js"
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -18,10 +18,18 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor} >
-        <App />
+          <App />
         </PersistGate>
       </Provider>
-      <Toaster duration={2000} richColors position="bottom-right" />
+      <Toaster duration={2000} richColors toastOptions={{
+        style: {
+          minWidth: '250px',  
+          minHeight: '60px',   
+          fontSize: '16px',    
+          borderRadius: '20px',
+          padding: '15px 15px',
+        },
+      }} position="bottom-right" />
     </BrowserRouter>
   </React.StrictMode>
 );

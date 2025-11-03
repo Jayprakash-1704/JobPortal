@@ -69,10 +69,12 @@ export default function Login() {
   }
 
   return (
-    <div className=" relative flex items-center justify-center min-h-screen bg-white px-2">
-      <h1 className="absolute  text-[10rem] font-extrabold text-sky-400 opacity-60 select-none">
-        JobMire
-      </h1>
+    <div className=" relative flex items-center justify-center min-h-screen  px-2">
+      <img
+    src="https://res.cloudinary.com/dhaztslbj/image/upload/v1761593015/direction_ei9r9o.png"
+    alt="bg-photo"
+    className="absolute inset-12 w-80 h-80 object-left -z-10"
+  />
       <Card className="w-full max-w-xs shadow-2xl rounded-2xl relative z-10">
         <CardHeader>
           <CardTitle className="text-center text-xl font-bold text-gray-800">

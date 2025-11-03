@@ -4,7 +4,7 @@ import { Facebook, Instagram ,Twitter} from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-gray-200 border-t">
+    <footer className="bg-neutral-800 text-white border-t">
       <div className="mx-auto w-full max-w-screen-xl p-4 md:py-4 lg:py-5">
         {/* Top Section */}
         <div className="md:flex md:justify-between md:items-start">
@@ -26,17 +26,17 @@ function Footer() {
               <h2 className="mb-4 text-sm font-semibold uppercase">Resources</h2>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link to="/" className="hover:underline">
+                  <Link to="/" className="hover:underline hover:text-[var(--color-red)]">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/about" className="hover:underline">
+                  <Link to="/about" className="hover:underline hover:text-[var(--color-red)]">
                     Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact-us" className="hover:underline">
+                  <Link to="/contact-us" className="hover:underline hover:text-[var(--color-red)]">
                     Explore
                   </Link>
                 </li>
@@ -52,7 +52,7 @@ function Footer() {
                     href="https://github.com/Jayprakash-1704-"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline hover:text-[var(--color-red)]"
                   >
                     Github
                   </a>
@@ -62,7 +62,7 @@ function Footer() {
                     href="https://discord.com/channels/1334202410100588635/1334202410100588638"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline hover:text-[var(--color-red)]"
                   >
                     Twitter
                   </a>
@@ -72,7 +72,7 @@ function Footer() {
                     href="https://discord.com/channels/1334202410100588635/1334202410100588638"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline hover:text-[var(--color-red)]"
                   >
                     Facebook
                   </a>
@@ -85,12 +85,12 @@ function Footer() {
               <h2 className="mb-4 text-sm font-semibold uppercase">Legal</h2>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link to="#" className="hover:underline">
+                  <Link to="#" className="hover:underline hover:text-[var(--color-red)]">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="hover:underline">
+                  <Link to="#" className="hover:underline hover:text-[var(--color-red)]">
                     Terms & Conditions
                   </Link>
                 </li>
@@ -116,14 +116,14 @@ function Footer() {
           <div className="mt-4 flex space-x-4 sm:mt-0">
             <a
               href="#"
-              className="p-2 rounded-full transition hover:bg-white hover:text-black"
+              className="p-2 rounded-full transition   hover:bg-[var(--color-red)]"
             >
               <Facebook size={18} />
               <span className="sr-only">Facebook</span>
             </a>
             <a
               href="#"
-              className="p-2 rounded-full transition hover:bg-white hover:text-black"
+              className="p-2 rounded-full transition   hover:bg-[var(--color-red)]"
             >
               <Instagram size={18} />
               <span className="sr-only">Instagram</span>
@@ -132,7 +132,7 @@ function Footer() {
               href="https://github.com/Jayprakash-1704-"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full transition hover:bg-white hover:text-black"
+             className="p-2 rounded-full transition   hover:bg-[var(--color-red)]"
             >
               <Twitter size={18} />
               <span className="sr-only">Twitter</span>

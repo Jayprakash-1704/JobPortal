@@ -4,7 +4,7 @@
 
 // export default function Browse() {
 
- 
+
 //   return (
 //     <div className="mx-20">
 //       <h1 className="text-2xl font-bold">
@@ -39,14 +39,18 @@ import usegetAllJobs from '@/hooks/getAllJobs';
 
 export default function Browse() {
   usegetAllJobs();
-  const { alljobs,loading } = useSelector(store => store.job); 
+  const { alljobs, loading } = useSelector(store => store.job);
 
   return (
-    <div className="mx-20">
-      <h1 className="text-2xl font-bold">
-        Search Result ({alljobs.length})
-      </h1>
-      <JobLists jobs={alljobs} loading={loading}/> {/* pass the jobs from Redux */}
+    <div className=''>
+
+
+      <div className="mx-20 ">
+        <h1 className="text-2xl font-bold">
+          Search Result ({alljobs.length})
+        </h1>
+        <JobLists jobs={alljobs} loading={loading} /> {/* pass the jobs from Redux */}
+      </div>
     </div>
   );
 }

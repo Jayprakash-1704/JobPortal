@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 
 export default function Filters({ filter, setFilter }) {
   return (
-    <aside className="md:col-span-1 bg-blue-200 p-4 rounded-2xl w-auto h-90">
+    <aside className="md:col-span-1 backdrop-brightness-90 p-4 rounded-2xl w-auto h-90">
       <h2 className="text-lg font-semibold mb-4">Filters</h2>
 
       {/* Job Type */}
@@ -16,11 +16,12 @@ export default function Filters({ filter, setFilter }) {
           <SelectTrigger className="w-[180px] bg-white text-gray-800 border border-gray-300 rounded-md ">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="All">All</SelectItem>
+          <SelectContent >
+            <SelectItem  value="All">All</SelectItem>
             <SelectItem value="Full-time">Full-Time</SelectItem>
             <SelectItem value="Part-time">Part-Time</SelectItem>
             <SelectItem value="Internship">Internship</SelectItem>
+            <SelectItem value="Remote">Remote</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -38,6 +39,7 @@ export default function Filters({ filter, setFilter }) {
           <SelectContent>
             <SelectItem value="All">All</SelectItem>
             <SelectItem value="Software">Software</SelectItem>
+            <SelectItem value="IT">IT</SelectItem>
             <SelectItem value="Management">Management</SelectItem>
             <SelectItem value="Education">Education</SelectItem>
             <SelectItem value="Marketing">Marketing</SelectItem>

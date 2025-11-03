@@ -19,5 +19,6 @@ const applicationSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
 const Application = mongoose.model("Application", applicationSchema);
 export default Application;

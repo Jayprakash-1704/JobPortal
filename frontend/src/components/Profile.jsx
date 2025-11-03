@@ -132,7 +132,7 @@ export default function ViewProfile() {
             user.profile.skills.map((skill, idx) => (
               <span
                 key={idx}
-                className="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm"
+                className="bg-[var(--color-red)] text-white px-3 py-1 rounded-full text-sm"
               >
                 {skill}
               </span>

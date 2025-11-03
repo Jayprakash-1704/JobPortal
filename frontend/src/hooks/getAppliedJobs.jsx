@@ -40,7 +40,7 @@
 
 
 
-// hooks/useAppliedJobs.js
+
 import { useEffect } from "react";
 import axios from "axios";
 import { APPLICATION_API_ENDPOINT } from "@/utils/constants";

@@ -72,16 +72,16 @@ export const getApplicants = async (req, res) => {
     const job = await Job.findById(jobId).populate({
       path: "applications",
       options: {
-        sort: { createdAt: -1 },
+        sort: { createdAt: -1 }},
         populate: {
-          populate: { path: "applicant", select: "fullName email role" }
-      },
-    }
-    });
+           path: "applicant",
+           select: "fullName email phoneNumber role profile "
+           }
+    })
     if (!job) {
       return res.status(400).json({ message: "job not found" });
     }
-    return res.status(200).json({ job,success:true });
+    return res.status(200).json({ job ,success:true });
   } catch (error) {
     console.log(error);
   }

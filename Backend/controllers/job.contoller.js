@@ -33,6 +33,8 @@ export const postJob = async (req, res) => {
     ) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
+
+
     const job = await Job.create({
       title,
       description,
@@ -44,8 +46,8 @@ export const postJob = async (req, res) => {
       company,
       jobType,
       position,
-      created_by: req.user._id,
-    });
+      created_by: req.user?._id,
+    })
     res.status(201).json({ message: "Job posted successfully", job,success:true });
   } catch (error) {
     console.log(error);
@@ -87,7 +89,7 @@ export const getAllJobs = async (req, res) => {
     };
 
     const alljobs = await Job.find(query)
-      .populate("company") // shortcut for { path: "company" }
+      .populate("company") 
       .sort({ createdAt: -1 });
 
     if (alljobs.length === 0) {
@@ -122,7 +124,9 @@ export const getJobById = async (req, res) => {
 export const getAdminJobs = async (req, res) => {
   try {
     const adminId = req.params.id;
-    const jobs = await Job.find({ created_by: adminId });
+    const jobs = await Job.find({ created_by: adminId }).populate({
+      path:"company"
+    });
     if (!jobs) {
       return res.status(404).json({ message: "No jobs found" });
     }

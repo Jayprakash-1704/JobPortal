@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema(
 
       skills: [{ type: String }],
 
+      experience:{
+        type:String
+      },
+
       resume: { type: String },
 
       resumeOriginalName: { type: String },
@@ -39,7 +43,6 @@ const userSchema = new mongoose.Schema(
         type: String,
         default: "",
       },
-
       coverPicture: {
         type: String,
         default: "",

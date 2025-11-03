@@ -9,15 +9,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Companies from "./Companies";
-import { Edit2, Ellipsis } from "lucide-react";
+import { Edit2, Ellipsis, Loader } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
 
 function CompanyTable() {
   const navigate = useNavigate()
   // const { companies } = useSelector(store => store.company);
   // const { companies } = useSelector((store) => store.company);
   const companies = useSelector((store) => store.company?.companies || []);
+  const loading=useSelector((store)=>store.companies?.loading)
   const searchCompanyByText = useSelector((store) => store.company?.searchCompanyByText)
   const [filterCompany, setFilterCompany] = useState(companies)
 
@@ -31,23 +33,40 @@ function CompanyTable() {
     setFilterCompany(filteredCompanies);
   }, [searchCompanyByText, companies])
 
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center py-10 text-center  text-gray-600 text-lg font-medium">
+          <Loader className="w-15 h-15 text-blue-500 animate-spin"/>
+        Loading Companies...
+      </div>
+    );
+  }
+
+    if (!filterCompany?.length) {
+      return (
+        <div className="text-center py-10 text-gray-500 text-lg">
+          No Companies found.
+        </div>
+      );
+    }
+
   const handleStatusChange = (id, newStatus) => {
     console.log(`Status changed for company ${id} → ${newStatus}`);
   };
 
   return (
-    <div className="p-6">
-
-
-      <div className="overflow-x-auto shadow-xl rounded-lg border border-gray-200 bg-white">
+    
+    <div className="p-6 backdrop-brightness-95">
+      <div className="overflow-x-auto bg-white  shadow-xl rounded-lg border border-gray-200">
         <table className="min-w-full text-sm text-left">
           <caption className="p-4 text-gray-500">
             A list of registered companies.
           </caption>
 
-          <thead className="bg-black text-white text-xs uppercase">
+          <thead className="bg-[var(--color-yellow)] text-white text-base ">
             <tr>
-              <th className="px-6 py-4">#</th>
+              <th className="px-6 py-4">No.</th>
               <th className="px-6 py-4">Company Name</th>
               <th className="px-6 py-4">Email</th>
               <th className="px-6 py-4">Location</th>
@@ -56,7 +75,7 @@ function CompanyTable() {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y-4 divide-gray-100">
             {filterCompany.map((company, index) => (
               <tr key={company.id} className="hover:bg-gray-50 transition">
                 <td className="px-6 py-4 text-gray-500">{index + 1}</td>
@@ -71,21 +90,18 @@ function CompanyTable() {
 
 
                 <td className="text-center">
-                  {/* <Ellipsis
-                    onClick={() => navigate(`/admin/companies/${company._id}/listed-jobs`)}
-                    className="mx-auto text-gray-600 cursor-pointer"
-                  /> */}
+                 
                   <Popover>
                     <PopoverTrigger>
-                      <Ellipsis />
+                      <Ellipsis className="cursor-pointer" />
                     </PopoverTrigger>
                     <PopoverContent className="w-28 p-2 bg-white ring-1 ring-gray-200 shadow-md border-none rounded-lg">
-                      <div onClick={() => navigate((`/admin/companies/${company._id}`))} className="flex gap-2 items-center px-2 py-1">
-                        <Edit2 className="w-4 h-4 text-gray-700" />
+                      <div onClick={() => navigate((`/admin/companies/${company._id}`))} className="flex gap-2 items-center cursor-pointer  px-2 py-1">
+                        <Edit2 className="w-4 h-4 text-gray-700 " />
                         <span className="text-sm text-gray-700">Edit</span>
                       </div>
                     </PopoverContent>
-                  </Popover>
+                  </Popover>     
 
 
                 </td>

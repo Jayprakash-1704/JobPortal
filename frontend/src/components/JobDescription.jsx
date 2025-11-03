@@ -10,24 +10,31 @@ import { toast } from "sonner";
 
 export default function JobDescription() {
   useGetAllJobs();
+
+  const formatJD = (text) => {
+    return text.split(".").map(
+      (line, index) =>
+        line.trim() && <li key={index}> {line.trim()}.</li>
+    );
+  };
+
   const { alljobs, loading } = useSelector((store) => store.job);
   const { user } = useSelector((store) => store.auth);
   const { id } = useParams();
   const job = alljobs.find((job) => job._id.toString() === id);
 
-  
   const [applied, setApplied] = useState(false);
+  const [applicantsCount, setApplicantsCount] = useState(0); // 🟢 CHANGED — track count locally
 
- 
   useEffect(() => {
     if (job && user) {
       const userHasApplied = job.applications?.some(
         (app) => app.applicant?._id === user._id
       );
       setApplied(userHasApplied || false);
+      setApplicantsCount(job.applications?.length || 0); // 🟢 CHANGED
     }
   }, [job, user]);
-
 
   const applyJobHandler = async () => {
     try {
@@ -36,9 +43,11 @@ export default function JobDescription() {
         {},
         { withCredentials: true }
       );
+
       if (res.data.success) {
         toast.success(res.data.message);
-        setApplied(true); // update state immediately
+        setApplied(true); // 🟢 CHANGED — update instantly
+        setApplicantsCount((prev) => prev + 1); 
       }
     } catch (error) {
       toast.warning(error.response?.data?.message || "Something went wrong");
@@ -71,7 +80,7 @@ export default function JobDescription() {
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
         <img
           className="w-24 h-24 rounded-full object-cover shadow-md"
-          src="https://www.shutterstock.com/shutterstock/photos/2590574625/display_1500/stock-vector-simple-arrow-and-cleaning-or-clean-arrow-with-box-concept-logo-vector-2590574625.jpg"
+          src={job.company.logo}
           alt={job.title}
         />
         <div className="flex-1">
@@ -85,7 +94,7 @@ export default function JobDescription() {
 
       {/* Job Stats */}
       <div className="flex flex-wrap gap-4 mb-6">
-        <div className="bg-blue-50 text-blue-700 px-4 py-2 rounded-md font-semibold">
+        <div className="bg-blue-50 text-blue-700 border-blue-200 border-2 px-4 py-2 rounded-md font-semibold">
           Posted:{" "}
           {new Date(job.createdAt).toLocaleDateString("en-US", {
             year: "numeric",
@@ -93,10 +102,10 @@ export default function JobDescription() {
             day: "numeric",
           })}
         </div>
-        <div className="bg-green-50 text-green-700 px-4 py-2 rounded-md font-semibold">
-          Applicants: {job.applications.length || 0}
+        <div className="bg-green-50 text-green-700 border-green-200 border-2 px-4 py-2 rounded-md font-semibold">
+          Applicants: {applicantsCount} {/* 🟢 CHANGED — use live state */}
         </div>
-        <div className="bg-yellow-50 text-yellow-700 px-4 py-2 rounded-md font-semibold">
+        <div className="bg-yellow-50 text-yellow-700 border-yellow-200 border-2 px-4 py-2 rounded-md font-semibold">
           Salary: {job.salary}
         </div>
       </div>
@@ -104,7 +113,7 @@ export default function JobDescription() {
       {/* Job Description */}
       <section className="text-gray-700 mb-6 leading-relaxed">
         <h2 className="text-xl font-semibold mb-2">Job Description</h2>
-        <p>{job.description}</p>
+        <p>{formatJD(job.description)}</p>
       </section>
 
       {/* Action Buttons */}
@@ -113,10 +122,12 @@ export default function JobDescription() {
           onClick={!applied ? applyJobHandler : undefined}
           disabled={applied}
           className={`w-full sm:w-auto text-white ${
-            applied ? "bg-gray-500" : "bg-blue-500 hover:bg-blue-600"
+            applied
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600"
           }`}
         >
-          {applied ? "Already Applied" : "Apply Now"}
+          {applied ? "Already Applied" : "Apply Now"} {/* 🟢 CHANGED */}
         </Button>
 
         <Link

@@ -30,7 +30,7 @@ const { alljobs,loading } = useSelector(store => store.job)
   }, [filter,alljobs]);
 
   return (
-    <div className="max-w-7xl bg-gray-100 mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="max-w-7xl  mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-6">
       <Filters filter={filter} setFilter={setFilter} />
       <JobLists jobs={filteredJobs} loading={loading} />
     </div>

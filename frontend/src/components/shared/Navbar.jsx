@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from '@radix-ui/react-avatar';
 import React, { useState } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { UserCheck2Icon, KeyRound, UserPen, LogOut } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -40,12 +40,12 @@ function Navbar() {
 
 
   return (
-    <div className="bg-white sticky top-0 z-50 shadow ">
-      <div className="flex   items-center justify-between mx-auto max-w-7xl h-19 px-10">
+    <div className="bg-[var(--color-yellow)] top-0 z-50 shadow ">
+      <div className="flex   items-center justify-between mx-auto max-w-7xl h-20 px-10">
         {/* Left - Logo */}
-        <div className="flex-shrink-0">
-          <span className="text-2xl text-red-500  font-bold">Job</span>
-          <span className="text-2xl text-blue-500 font-bold">Mire</span>
+        <div className="flex-shrink-0 ">
+          <span className="text-2xl text-orange-600  font-bold">Job</span>
+          <span className="text-2xl text-[var(--color-white)]  font-bold">Mire</span>
         </div>
 
         {/* Middle - Nav Links */}
@@ -53,47 +53,57 @@ function Navbar() {
           <ul className="flex font-medium gap-8 items-center">
             {user && user.role === "recruiter" ? (
               <> <li>
-                <Link
-                  className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full "
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
+                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
                   to={"/admin/jobs"}
                 >
                   Jobs
-                </Link>
+                </NavLink>
               </li>
                 <li>
-                  <Link
-                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
+                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full"}
                     to={"/admin/companies"}
                   >
                     Companies
-                  </Link>
+                  </NavLink>
                 </li>
               </>
-              ) : (
+            ) : (
               <>
                 <li>
-                  <Link
-                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full "
-                    to={"/"}
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
+                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full"}
+                        to={"/"}
                   >
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
-                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
+                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
                     to={"/jobs"}
                   >
                     Jobs
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
-                    className="relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[4px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
+                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
                     to={"/explore"}
                   >
                     Explore
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
@@ -140,7 +150,7 @@ function Navbar() {
                 </Avatar>
                 {/* </div> */}
               </PopoverTrigger>
-              <PopoverContent className="w-65 px-5 py-5 z-50 items-center bg-white  ring-2 ring-white rounded-xl">
+              <PopoverContent className="w-65 px-5 py-5 z-50 items-center  bg-neutral-100  ring-2 ring-white rounded-xl">
                 <div className="flex flex-col gap-3">
                   <div className="flex  items-center gap-2">
                     <Avatar className="cursor-pointer w-12 h-12 rounded-full">
@@ -168,7 +178,7 @@ function Navbar() {
                     <span>
                       <KeyRound />
                     </span>
-                    <Link to={"/change-password"}>Change Password</Link>
+                    <Link to={`${user._id}/change-password`}>Change Password</Link>
                   </div>
                   <div className="flex items-center gap-4">
                     <span>

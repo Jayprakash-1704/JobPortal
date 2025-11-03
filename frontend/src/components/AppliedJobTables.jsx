@@ -71,7 +71,7 @@ function AppliedJobTables() {
 
       <div className="overflow-x-auto rounded-lg shadow">
         <table className="w-full border-collapse bg-white text-left text-sm">
-          <thead className="bg-indigo-100 text-gray-700 text-base">
+          <thead className="bg-[var(--color-red)] text-white text-base">
             <tr>
               <th className="px-6 py-3">#</th>
               <th className="px-6 py-3">Job Title</th>

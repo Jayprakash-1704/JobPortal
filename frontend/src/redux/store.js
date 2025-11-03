@@ -7,6 +7,7 @@ import { persistStore,persistReducer,FLUSH,REHYDRATE,PAUSE,PERSIST,PURGE,REGISTE
 
 import storage from "redux-persist/lib/storage"
 import  companySlice  from './companyslice'
+import  applicationSlice  from './applicationslice'
 // import { version } from 'vite'
 
 const persistConfig = {
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   auth: authSlice,
   job:jobSlice,
   company:companySlice,
+  applications:applicationSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

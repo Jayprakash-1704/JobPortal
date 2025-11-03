@@ -15,6 +15,6 @@ router.route("/getall-jobs").get(isauthenticated, getAllJobs);
 router.route("/get-job/:id").get(isauthenticated, getJobById);
 router.route("/getJobsAdmin/:id").get(isauthenticated, getAdminJobs);
 
-
+// router.route("/getJobsAdmin/:id").get(isauthenticated, getAdminJobs);
 
 export default router;

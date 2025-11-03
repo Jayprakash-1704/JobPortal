@@ -13,6 +13,10 @@ import UpdateProfileDialog from './components/UpdateProfileDialog.jsx';
 import Companies from './components/adminUI/Companies.jsx';
 import CompanyCreate from './components/adminUI/CompanyCreate.jsx';
 import CompanyHandlePage from './components/adminUI/CompanyHandlePage.jsx';
+import AdminJobsPage from './components/adminUI/AdminJobsPage.jsx';
+import ViewApplications from './components/adminUI/ViewApplications.jsx';
+import PostJobs from './components/adminUI/PostJobs.jsx';
+import ChangePassword from './components/shared/ChangePassword.jsx';
 
 function App() {
 
@@ -31,10 +35,14 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/explore" element={<Browse />} />
         <Route path="/view-profile" element={<Profile />} />
+        <Route path="/:id/change-password" element={<ChangePassword />} />
         <Route path="/jobs/description/:id" element={<JobDescription  />} />
         <Route path="/admin/companies" element={< Companies/>} />
         <Route path="/admin/companies/create" element={< CompanyCreate/>} />
         <Route path="/admin/companies/:id" element={< CompanyHandlePage/>} />
+        <Route path="/admin/jobs" element={< AdminJobsPage/>} />
+        <Route path="/admin/jobs/:id/view-applications" element={<ViewApplications/>} />
+        <Route path="/admin/jobs/create" element={<PostJobs/>} />
         
       </Routes>
     </>
