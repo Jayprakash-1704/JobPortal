@@ -167,7 +167,6 @@ export const editJob = async (req, res) => {
 
     // Build updateData only with fields that exist
     const updateData = {};
-
     if (title) updateData.title = title;
     if (description) updateData.description = description;
     if (position) updateData.position = position;
