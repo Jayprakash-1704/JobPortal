@@ -23,12 +23,12 @@ export default function ViewProfile() {
         {/* Recruiter + Company Header */}
         <Card className="grid grid-cols-2 gap-6 p-6 -mt-15 relative z-10">
           <img
-            src={user?.company?.logo}
+            src={user?.profile.profilePhoto}
             alt="company logo"
             className="w-28 h-28 rounded-full object-contain border-4 border-white shadow-md"
           />
           <div>
-            <h2 className="text-2xl font-bold">{user?.company?.name}</h2>
+            {/* <h2 className="text-2xl font-bold">{user?.company}</h2> */}
             <p className="text-gray-600">{user?.fullName} (Recruiter)</p>
 
             <div className="flex gap-4 mt-2 text-sm text-gray-700">
@@ -52,16 +52,6 @@ export default function ViewProfile() {
           </CardContent>
         </Card>
 
-        {/* Posted Jobs */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Job Listings</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {/* Replace with your recruiter job table */}
-            {/* <RecruiterJobTable jobs={user?.company?.jobs || []} /> */}
-          </CardContent>
-        </Card>
       </div>
     );
   }
@@ -69,6 +59,7 @@ export default function ViewProfile() {
 
 
   return (
+    <div className="backdrop-brightness-95">
     <div className="max-w-4xl mx-auto p-6 space-y-6 shadow-2xl bg-white ">
       {/* Cover Photo */}
       <div className="w-full h-48 rounded-2xl overflow-hidden">
@@ -102,7 +93,7 @@ export default function ViewProfile() {
           </div>
 
           {user?.profile?.resume && (
-            <Button variant="outline" className="bg-blue-500 text-white mt-3">
+            <Button variant="outline" className="bg-[var(--color-yellow)] text-white mt-3">
               <a href={user.profile.resume} download={user.profile.resumeoriginalname} target="_blank" className="flex items-center gap-2">
                 <Download size={16} /> Download Resume
               </a>
@@ -132,7 +123,7 @@ export default function ViewProfile() {
             user.profile.skills.map((skill, idx) => (
               <span
                 key={idx}
-                className="bg-[var(--color-red)] text-white px-3 py-1 rounded-full text-sm"
+                className="bg-[var(--color-yellow)] text-white px-3 py-1 rounded-full text-sm"
               >
                 {skill}
               </span>
@@ -145,6 +136,7 @@ export default function ViewProfile() {
       <div>
         <AppliedJobTables />
       </div>
+    </div>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { createSlice } from "@reduxjs/toolkit";
     appliedJobs: [],
     searchJobByText:"",
     loading:false,
+    singleJob:null
     
   },
   reducers: {
@@ -27,13 +28,16 @@ import { createSlice } from "@reduxjs/toolkit";
     },
      setSearchJobByText:(state,action)=>{
       state.searchJobByText=action.payload
+    },
+    setSingleJob:(state,action)=>{
+      state.singleJob=action.payload
     }
     
 
   },
 });
 
-export const { setAllJobs,setLoading,setAppliedJobs,setAllAdminJobs,setSearchJobByText } = jobSlice.actions;
+export const { setAllJobs,setLoading,setAppliedJobs,setAllAdminJobs,setSearchJobByText,setSingleJob } = jobSlice.actions;
 
 export default jobSlice.reducer;
 

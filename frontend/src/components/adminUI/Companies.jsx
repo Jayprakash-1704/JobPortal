@@ -30,7 +30,7 @@ function Companies() {
           /> */}
           <Input
             onChange={(e) => setInput(e.target.value)}
-            className="w-80 border border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:ring-2 focus:var[(--color-yellow)] [&>input]:text-4xl [&>input::placeholder]:text-4xl"
+            className="w-80 border border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:ring-2 focus:ring-[var(--color-yellow)] [&>input]:text-4xl [&>input::placeholder]:text-4xl"
             placeholder="Filter by company name"
           />
 

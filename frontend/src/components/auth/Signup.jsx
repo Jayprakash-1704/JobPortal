@@ -88,10 +88,8 @@ export default function Signup() {
   }
 
   return (
-    <div className="relative flex items-center justify-center h-screen bg-white px-2">
-      <h1 className="absolute text-[4rem] sm:text-[8rem] lg:text-[12rem] font-extrabold text-sky-400 opacity-60 select-none">
-        JobMire
-      </h1>
+    <div className="relative flex items-center justify-center h-screen bg-[var(--color-yellow)] px-2">
+      
 
       <Card className="w-full max-w-xs sm:max-w-sm h-[95%] flex flex-col shadow-xl rounded-xl relative z-10 scale-95">
         <CardHeader>

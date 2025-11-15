@@ -22,7 +22,6 @@ export default function JobDescription() {
   const { user } = useSelector((store) => store.auth);
   const { id } = useParams();
   const job = alljobs.find((job) => job._id.toString() === id);
-
   const [applied, setApplied] = useState(false);
   const [applicantsCount, setApplicantsCount] = useState(0); // 🟢 CHANGED — track count locally
 
@@ -32,7 +31,7 @@ export default function JobDescription() {
         (app) => app.applicant?._id === user._id
       );
       setApplied(userHasApplied || false);
-      setApplicantsCount(job.applications?.length || 0); // 🟢 CHANGED
+      setApplicantsCount(job.applications?.length || 0); 
     }
   }, [job, user]);
 
@@ -56,7 +55,7 @@ export default function JobDescription() {
 
   if (loading) {
     return (
-      <div className="flex flex-col justify-center items-center min-h-[60vh]">
+      <div className="flex flex-col  justify-center items-center min-h-[60vh]">
         <Loader className="animate-spin w-16 h-16 text-blue-500" />
         <h2 className="text-black font-semibold mt-4">Loading Job...</h2>
       </div>
@@ -65,7 +64,7 @@ export default function JobDescription() {
 
   if (!job) {
     return (
-      <div className="p-6 text-center">
+      <div className="p-6  text-center">
         <h2 className="text-xl font-semibold mb-4">Job not found</h2>
         <Link to="/jobs" className="text-blue-500 underline">
           Back to Jobs
@@ -75,7 +74,8 @@ export default function JobDescription() {
   }
 
   return (
-    <main className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="backdrop-brightness-95">
+    <main className="max-w-4xl mx-auto p-6 px-12 bg-white shadow-lg rounded-lg">
       {/* Job Header */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
         <img
@@ -138,5 +138,6 @@ export default function JobDescription() {
         </Link>
       </div>
     </main>
+    </div>
   );
 }

@@ -14,8 +14,7 @@ function Footer() {
               to="/"
               className="flex items-center space-x-2 text-3xl font-extrabold"
             >
-              Job
-              <span className="text-indigo-700">Mire</span>
+             <img src="https://res.cloudinary.com/dhaztslbj/image/upload/v1762201840/hire-linker-high-resolution-logo_dwjrcz.png" alt="logo" className="object-contain h-14" />
             </Link>
           </div>
 
@@ -107,7 +106,7 @@ function Footer() {
           <span className="text-xs sm:text-sm text-gray-600">
             © 2025{" "}
             <Link to="/" className="hover:underline font-medium">
-              JobMire
+              HireLinker
             </Link>
             . All Rights Reserved.
           </span>

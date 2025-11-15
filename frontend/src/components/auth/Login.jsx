@@ -69,12 +69,7 @@ export default function Login() {
   }
 
   return (
-    <div className=" relative flex items-center justify-center min-h-screen  px-2">
-      <img
-    src="https://res.cloudinary.com/dhaztslbj/image/upload/v1761593015/direction_ei9r9o.png"
-    alt="bg-photo"
-    className="absolute inset-12 w-80 h-80 object-left -z-10"
-  />
+    <div className=" relative flex items-center justify-center min-h-screen bg-[var(--color-yellow)]  px-2">
       <Card className="w-full max-w-xs shadow-2xl rounded-2xl relative z-10">
         <CardHeader>
           <CardTitle className="text-center text-xl font-bold text-gray-800">
@@ -135,9 +130,9 @@ export default function Login() {
               </RadioGroup>
             </div>
             {
-              loading ? <Button className="w-full">
+              loading ? <Button className="w-full bg-[var(--color-red)] ">
                 <span>Please wait...</span><Loader className="mr-2 h-4 w-4 animate-spin" />
-              </Button> : <Button type="submit" className="w-full">
+              </Button> : <Button type="submit" className="w-full bg-[var(--color-red)] hover:bg-amber-600">
                 Login
               </Button>
             }

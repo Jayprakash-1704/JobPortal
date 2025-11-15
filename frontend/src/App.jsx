@@ -17,6 +17,7 @@ import AdminJobsPage from './components/adminUI/AdminJobsPage.jsx';
 import ViewApplications from './components/adminUI/ViewApplications.jsx';
 import PostJobs from './components/adminUI/PostJobs.jsx';
 import ChangePassword from './components/shared/ChangePassword.jsx';
+import EditJobsDetails from './components/adminUI/EditJobsDetails.jsx';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/admin/jobs" element={< AdminJobsPage/>} />
         <Route path="/admin/jobs/:id/view-applications" element={<ViewApplications/>} />
         <Route path="/admin/jobs/create" element={<PostJobs/>} />
+        <Route path="/admin/jobs/:id/edit-job" element={<EditJobsDetails/>} />
         
       </Routes>
     </>

@@ -38,8 +38,9 @@ function AdminJobsTables() {
 
     if (!filterJobs?.length) {
       return (
-        <div className="text-center py-10 text-gray-500 text-lg">
-          No jobs found.
+        <div className="text-center  py-10 text-gray-600 text-lg">
+          <img src="https://res.cloudinary.com/dhaztslbj/image/upload/v1762250877/49342676_9214814-removebg-preview_ciyx1k.png" alt="" className="h-40 mx-auto object-contain"  />
+          <p>No Jobs Found</p>
         </div>
       );
     }

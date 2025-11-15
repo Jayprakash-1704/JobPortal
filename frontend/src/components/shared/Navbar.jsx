@@ -1,6 +1,6 @@
 import { Avatar, AvatarImage, AvatarFallback } from '@radix-ui/react-avatar';
 import React, { useState } from 'react'
-import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
+import { Popover, PopoverTrigger, PopoverContent, PopoverClose } from '@radix-ui/react-popover';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { UserCheck2Icon, KeyRound, UserPen, LogOut } from 'lucide-react';
@@ -19,6 +19,12 @@ function Navbar() {
   const { user } = useSelector(store => store.auth)
 
   const [open, setOpen] = useState(false)
+  const [updateOpen, setupdateOpen] = useState(false)
+
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
+
 
   const logOutHandler = async () => {
 
@@ -43,10 +49,14 @@ function Navbar() {
     <div className="bg-[var(--color-yellow)] top-0 z-50 shadow ">
       <div className="flex   items-center justify-between mx-auto max-w-7xl h-20 px-10">
         {/* Left - Logo */}
-        <div className="flex-shrink-0 ">
-          <span className="text-2xl text-orange-600  font-bold">Job</span>
-          <span className="text-2xl text-[var(--color-white)]  font-bold">Mire</span>
+        <div className="flex-shrink-0">
+          <img
+            src="https://res.cloudinary.com/dhaztslbj/image/upload/v1762201840/hire-linker-high-resolution-logo_dwjrcz.png"
+            alt=" logo"
+            className="h-14 w-auto object-contain"
+          />
         </div>
+
 
         {/* Middle - Nav Links */}
         <div className="flex-1 flex justify-center">
@@ -66,7 +76,7 @@ function Navbar() {
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
-                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full"}
+                        "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full"}
                     to={"/admin/companies"}
                   >
                     Companies
@@ -79,8 +89,8 @@ function Navbar() {
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
-                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full"}
-                        to={"/"}
+                        "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full"}
+                    to={"/"}
                   >
                     Home
                   </NavLink>
@@ -89,7 +99,7 @@ function Navbar() {
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
-                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
+                        "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
                     to={"/jobs"}
                   >
                     Jobs
@@ -99,7 +109,7 @@ function Navbar() {
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
-                      "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
+                        "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
                     to={"/explore"}
                   >
                     Explore
@@ -130,7 +140,7 @@ function Navbar() {
               </Link>
             </div>
           ) : (
-            <Popover>
+            <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 {/* <div className='flex items-center h-full'> */}
                 <Avatar className="cursor-pointer w-9 h-9 rounded-full">
@@ -172,13 +182,13 @@ function Navbar() {
                     <span>
                       <UserCheck2Icon />
                     </span>
-                    <Link to={"/view-profile"}>View Profile</Link>
+                    <Link to={"/view-profile"} onClick={handleLinkClick}>View Profile</Link>
                   </div>
                   <div className="flex items-center gap-4">
                     <span>
                       <KeyRound />
                     </span>
-                    <Link to={`${user._id}/change-password`}>Change Password</Link>
+                    <Link to={`${user._id}/change-password`} onClick={handleLinkClick}>Change Password</Link>
                   </div>
                   <div className="flex items-center gap-4">
                     <span>
@@ -188,23 +198,28 @@ function Navbar() {
                       to="/profile/update"
                       onClick={(e) => {
                         e.preventDefault()
-                        setOpen(true)
+                        setupdateOpen(true);
+                        // setOpen(false)
                       }}
                     >
                       Update Profile
                     </Link>
-                    <UpdateProfileDialog open={open} setOpen={setOpen} />
+
                   </div>
                   <div className="flex items-center gap-4">
                     <span>
                       <LogOut />
                     </span>
-                    <Link onClick={logOutHandler} to="/logout" >Logout</Link>
+                    {/* <PopoverClose asChild> */}
+                    <Link to="/logout" onClick={logOutHandler}>Logout</Link>
+                    {/* </PopoverClose> */}
                   </div>
                 </div>
               </PopoverContent>
             </Popover>
+
           )}
+          <UpdateProfileDialog open={updateOpen} setOpen={setupdateOpen} />
         </div>
       </div>
 
