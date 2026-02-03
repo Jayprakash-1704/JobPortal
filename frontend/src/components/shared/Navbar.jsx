@@ -121,7 +121,7 @@ function Navbar() {
           </ul>
         </div>
 
-        {/* Right - Profile / Buttons */}
+       
         <div className="flex items-center gap-4">
           {!user ? (
             <div className="flex items-center gap-3">
@@ -142,7 +142,7 @@ function Navbar() {
           ) : (
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
-                {/* <div className='flex items-center h-full'> */}
+               
                 <Avatar className="cursor-pointer w-9 h-9 rounded-full">
                   <AvatarImage
                     src={user?.profile?.profilePhoto || ""}
@@ -210,9 +210,9 @@ function Navbar() {
                     <span>
                       <LogOut />
                     </span>
-                    {/* <PopoverClose asChild> */}
+                    
                     <Link to="/logout" onClick={logOutHandler}>Logout</Link>
-                    {/* </PopoverClose> */}
+                                        
                   </div>
                 </div>
               </PopoverContent>

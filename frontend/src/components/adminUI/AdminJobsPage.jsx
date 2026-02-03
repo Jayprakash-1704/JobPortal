@@ -35,7 +35,7 @@ function AdminJobsPage() {
           />
         </div>
 
-        {/* New Job button */}
+        
         <Button
           className="bg-[var(--color-red)] text-white px-6 py-6 rounded-lg hover:bg-blue-950 shadow-md"
           onClick={() => navigate("/admin/jobs/create")}
@@ -44,7 +44,7 @@ function AdminJobsPage() {
         </Button>
       </div>
 
-      {/* Job Table */}
+      
       <div className=" shadow-md rounded-lg overflow-hidden">
         <AdminJobsTables />
       </div>
