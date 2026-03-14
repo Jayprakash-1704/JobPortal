@@ -8,6 +8,7 @@ import userRoute from "./routes/user.routes.js";
 import companyRoute from "./routes/company.routes.js";
 import JobRoute from "./routes/job.routes.js";
 import ApplicationRoute from "./routes/application.routes.js";
+import ats from "./routes/ats.routes.js";
 
 dotenv.config({});
 const app = express();
@@ -34,6 +35,7 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/jobs", JobRoute);
 app.use("/api/v1/application",ApplicationRoute);
+app.use("/api/v1/ats",ats)
 
 
 app.listen(PORT, () => {

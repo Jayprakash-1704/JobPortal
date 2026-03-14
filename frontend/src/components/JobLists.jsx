@@ -18,7 +18,7 @@ export default function JobLists({jobs=[], loading = false}) {
   }
   return (
     <main className="md:col-span-3    space-y-4">
-      <h2 className="text-xl font-semibold mb-4">Available Jobs</h2>
+      <h2 className="text-3xl font-bold mb-4">Available Jobs</h2>
       {jobs.length > 0 ? (
         jobs.map((job) => (
           <div

@@ -33,19 +33,19 @@ function HeroSection() {
           <div className="flex gap-8 mt-6">
             <div>
               <h3 className="text-3xl font-bold">
-                <CountUp end={50} suffix="k" />
+                <CountUp end={50} suffix="k+" />
               </h3>
               <p className="text-black">Jobs Posted</p>
             </div>
             <div>
               <h3 className="text-3xl font-bold">
-                <CountUp end={3} suffix="k" />
+                <CountUp end={3} suffix="k+" />
               </h3>
               <p className="text-black">Companies</p>
             </div>
             <div>
               <h3 className="text-3xl font-bold">
-                <CountUp end={500} duration={1.75} suffix="k" />
+                <CountUp end={500} duration={1.75} suffix="k+" />
               </h3>
               <p className="text-black">Candidates</p>
             </div>

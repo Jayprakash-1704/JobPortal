@@ -115,6 +115,16 @@ function Navbar() {
                     Explore
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-[var(--color-red)] border-2 px-2 py-1 border-[var(--color-red)] rounded-4xl " :
+                        "relative pb-7 after:content-[''] after:absolute after:left-0 after:bottom-0  text-[var(--color-white)] after:w-0 after:h-[4px] after:bg-[var(--color-red)] after:transition-all after:duration-500 hover:after:w-full "}
+                    to={"/check"}
+                  >
+                     Resume
+                  </NavLink>
+                </li>
               </>
             )}
 
