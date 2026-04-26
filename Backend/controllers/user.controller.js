@@ -78,15 +78,15 @@ export const login = async (req, res) => {
       profile: user.profile,
     };
 
-    return res
-      .status(200)
-      .cookie("token", token, {
-        maxAge: 1000 * 60 * 60 * 24,
-        httpOnly: true,
-        sameSite: "lax", // change from "none"
-        // secure: false,
-      })
-      .json({ message: `Welcome Back ${user.fullName}`, user, success: true });
+   return res
+  .status(200)
+  .cookie("token", token, {
+    maxAge: 1000 * 60 * 60 * 24,
+    httpOnly: true,
+    secure: true,        // REQUIRED on Render (HTTPS)
+    sameSite: "none",    // REQUIRED for cross-origin
+  })
+  .json({ message: `Welcome Back ${user.fullName}`, user, success: true });
   } catch (error) {
     res.status(400).json(error);
   }
@@ -95,12 +95,11 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token", {
-      
-      httpOnly: true,
-      sameSite: "lax", 
-      // secure: false,
-    });
+   res.clearCookie("token", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+});
     return res
       .status(200)
       .json({ message: "Logout successfully", success: true });
