@@ -22,11 +22,16 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",
+    "https://your-frontend-name.onrender.com"
+  ],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
+
+
 
 
 //  api routes
